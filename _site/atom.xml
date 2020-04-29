@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Poole</title>
+ <link href="/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2020-04-29T13:28:08+02:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>Mark Otto</name>
+   <email>markdotto@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Index</title>
+   <link href="http://localhost:4000/2020/04/04/index/"/>
+   <updated>2020-04-04T00:00:00+02:00</updated>
+   <id>http://localhost:4000/2020/04/04/index</id>
+   <content type="html">&lt;p&gt;asd&lt;/p&gt;
+</content>
+ </entry>
+ 
+
+</feed>
