@@ -1,217 +1,92 @@
-# Type: Minimal and Clean Free Jekyll Theme
+# Poole
 
-<img alt="Type: Minimal and Clean Free Jekyll Theme" src="https://user-images.githubusercontent.com/626005/63093493-c3daa880-bf65-11e9-860e-da88047cce24.png">
+*The Strange Case of Dr. Jekyll and Mr. Hyde* tells the story of a lawyer investigating the connection of two persons, Dr. Henry Jekyll and Mr. Edward Hyde. Chief among the novel's supporting cast is a man by the name of Mr. Poole, Dr. Jekyll's loyal butler.
 
-- [Configurations](#configurations)
-- [Deployment](#deployment)
-- [Posts](#posts)
-- [Pages](#pages)
-- [Navigation](#navigation)
-- [Disqus Comments](#disqus-comments)
-- [Google Analytics](#google-analytics)
-- [Social Media Links](#social-media-links)
-- [Update favicon](#update-favicon)
+-----
 
-### Configurations
+Poole is the butler for [Jekyll](http://jekyllrb.com), the static site generator. It's designed and developed by [@mdo](https://twitter.com/mdo) to provide a clear and concise foundational setup for any Jekyll site. It does so by furnishing a full vanilla Jekyll install with example templates, pages, posts, and styles.
 
-Type theme comes with different customizations in the `_config.yml` file:
+![Poole](https://f.cloud.github.com/assets/98681/1834359/71ae4048-73db-11e3-9a3c-df38eb170537.png)
 
-```sh
-title:       Type
-email:       ''
-description: ''
-baseurl:     '' # The subpath of your site, e.g. /blog
-url:         '' # The base hostname & protocol for your site
-twitter:     ''
-github:      ''
-instagram:   ''
-facebook:    ''
+See Poole in action with [the demo site](https://demo.getpoole.com).
 
-markdown:  kramdown
-permalink: pretty
-paginate:  60
+There are currently two official themes built on Poole:
 
-sass:
-  style: compressed
+* [Hyde](https://hyde.getpoole.com)
+* [Lanyon](https://lanyon.getpoole.com)
 
-gems:
-  - jekyll-paginate
-  - jekyll/tagging
+Individual theme feedback and bug reports should be submitted to the theme's individual repository.
 
-include:
-  - _pages
 
-exclude:
-  - vendor
-  - Gemfile
-  - Gemfile.lock
+## Contents
 
-# Tags
-tag_page_dir:         tag
-tag_page_layout:      tag_page
-tag_permalink_style:  pretty
+- [Usage](#usage)
+- [Development](#development)
+- [Author](#author)
+- [License](#license)
 
-# Pages path
-defaults:
-  - scope:
-      path: '_pages'
-    values:
-      permalink: /:basename:output_ext
+
+## Usage
+
+### 1. Install dependencies
+
+Poole is built on Jekyll and uses its built-in SCSS compiler to generate our CSS. Before getting started, you'll need to install the Jekyll gem and related dependencies:
+
+```bash
+$ gem install jekyll jekyll-gist jekyll-sitemap jekyll-seo-tag
 ```
 
-### Deployment
+**Windows users:** Windows users have a bit more work to do, but luckily [@juthilo](https://github.com/juthilo) has your back with his [Run Jekyll on Windows](https://github.com/juthilo/run-jekyll-on-windows) guide.
 
-To run the theme locally, navigate to the theme directory and run `bundle install` to install the dependencies, then run `jekyll serve` to start the Jekyll server.
+**Need syntax highlighting?** Poole includes support for Pygments or Rouge, so install your gem of choice to make use of the built-in styling. Read more about this [in the Jekyll docs](http://jekyllrb.com/docs/templates/#code_snippet_highlighting).
 
-I would recommend checking the [Deployment Methods](https://jekyllrb.com/docs/deployment-methods/) page on Jekyll website.
+### 2a. Quick start
 
-### Posts
+To help anyone with any level of familiarity with Jekyll quickly get started, Poole includes everything you need for a basic Jekyll site. To that end, just download Poole and start up Jekyll.
 
-To create a new post, you can create a new markdown file inside the `_posts` directory by following the [recommended file structure](https://jekyllrb.com/docs/posts/#creating-post-files).
+### 2b. Roll your own Jekyll site
 
-The following is a post file with different configurations you can add as an example:
+Folks wishing to use Jekyll's templates and styles can do so with a little bit of manual labor. Download Poole and then copy what you need (likely `_layouts/`, `*.html` files, `atom.xml` for RSS, and `assets/` for CSS, JS, etc.).
 
-```sh
----
-layout: post
-title: Welcome to Jekyll!
-featured: true
-tags: [frontpage, jekyll, blog]
-image: '/images/welcome.jpg'
----
+### 3. Running locally
+
+To see your Jekyll site with Poole applied, start a Jekyll server. In Terminal, from `/poole` (or whatever your Jekyll site's root directory is named):
+
+```bash
+$ jekyll serve
 ```
 
-You can set the author, featured or not, tags, and the post image.
+Open <http://localhost:4000> in your browser, and voilà.
 
-The `featured` key is to mark the post as a featured post, this will add a simple star icon (*) to the postcard.
+### 4. Serving it up
 
-To keep things more organized, add post images to **/images/pages** directory, and add page images to **/images/pages** directory.
+If you host your code on GitHub, you can use [GitHub Pages](https://pages.github.com) to host your project.
 
-To create a draft post, create the post file under the **_drafts** directory, and you can find more information at [Working with Drafts](http://jekyllrb.com/docs/drafts/).
+1. Fork this repo and switch to the `gh-pages` branch.
+  1. If you're [using a custom domain name](https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages), modify the `CNAME` file to point to your new domain.
+  2. If you're not using a custom domain name, **modify the `baseurl` in `_config.yml`** to point to your GitHub Pages URL. Example: for a repo at `github.com/username/poole`, use `http://username.github.io/poole/`. **Be sure to include the trailing slash.**
+3. Done! Head to your GitHub Pages URL or custom domain.
 
-For tags, try to not add space between two words, for example, `Ruby on Rails`, could be something like (`ruby-on-rails`, `Ruby_on_Rails`, or `Ruby-on-Rails`).
+No matter your production or hosting setup, be sure to verify the `baseurl` option file and `CNAME` settings. Not applying this correctly can mean broken styles on your site.
 
-Note that tags are not working with GitHub Pages, that's because the used [jekyll-tagging
-](https://github.com/pattex/jekyll-tagging) plugin is not [whitelisted](https://pages.github.com/versions/) by GitHub.
+## Development
 
-To make this work, I use [Netlify.com](https://www.netlify.com/) for deployment.
+Poole has two branches, but only one is used for active development.
 
-### Pages
+- `master` for development.  **All pull requests should be to submitted against `master`.**
+- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
 
-To create a new page, just create a new markdown file inside the `_pages` directory.
+CSS is handled via Jeykll's built-in Sass compiler. Source Sass files are located in `_sass/`, included into `styles.scss`, and compile to `styles.css`.
 
-The following is the `about.md` file that you can find as an example included in the theme with the configurations you can set.
+## Author
 
-```sh
----
-layout: page
-title: About
-image: '/images/pages/about.jpeg'
----
-```
-
-Things you can change are: `title` and `image` path.
+**Mark Otto**
+- <https://github.com/mdo>
+- <https://twitter.com/mdo>
 
 
-### Navigation
+## License
 
-The navigation on the sidebar will automatically include all the links to the pages you have created.
+Open sourced under the [MIT license](LICENSE.md).
 
-### Disqus Comments
-
-Open `_includes/disqus.html` file, and change the `aspirethemes-demos` value on line `12` with your [Disqus account shortname](https://help.disqus.com/customer/portal/articles/466208).
-
-```js
-s.src = '//aspirethemes-demo.disqus.com/embed.js';
-```
-
-So, if your Disqus shortname is `exampleone`, the final code above should be
-
-```js
-s.src = '//exampleone.disqus.com/embed.js';
-```
-
-That's all you need to setup Disqus from the theme side. If you get any issue regarding that comments are unable to load. First, make sure you have [registered your website with Disqus (Step 1)](https://help.disqus.com/customer/portal/articles/466182-publisher-quick-start-guide)
-
-And also check [Disqus troubleshooting guide](https://help.disqus.com/customer/portal/articles/472007-i-m-receiving-the-message-%22we-were-unable-to-load-disqus-%22) if you still have issues.
-
-### Google Analytics
-
-To integrate Google Analytics, open `_includes/analytics.html`, and add your Google Analytics code.
-
-### Social Media Links
-
-Social media links included in `_includes/footer.html` file.
-
-The theme is using [Evil Icons](http://evil-icons.io/), which contains very simple and clean icons. The following is a list of the social media icons to use:
-
-Twitter
-
-```html
-<span data-icon='ei-sc-twitter' data-size='s'></span>
-```
-
-Facebook
-
-```html
-<span data-icon='ei-sc-facebook' data-size='s'></span>
-```
-
-Instagram
-
-```html
-<span data-icon='ei-sc-instagram' data-size='s'></span>
-```
-
-Pinterest
-
-```html
-<span data-icon='ei-sc-pinterest' data-size='s'></span>
-```
-
-Vimeo
-
-```html
-<span data-icon='ei-sc-vimeo' data-size='s'></span>
-```
-
-Google Plus
-
-```html
-<span data-icon='ei-sc-google-plus' data-size='s'></span>
-```
-
-SoundCloud
-
-```html
-<span data-icon='ei-sc-soundcloud' data-size='s'></span>
-```
-
-Tumblr
-
-```html
-<span data-icon='ei-sc-tumblr' data-size='s'></span>
-```
-
-Youtube
-
-```html
-<span data-icon='ei-sc-youtube' data-size='s'></span>
-```
-
-### Update favicon
-
-You can find the current favicon (favicon.ico) inside the theme root directory, just replace it with your new favicon.
-
-
-### Aspire Themes
-
-👉 Visit [**aspirethemes.com**](http://bit.ly/type-jekyll-github-link) for more Jekyll, Ghost, and WordPress themes.
-
-<img alt="Aspire Themes" src="https://user-images.githubusercontent.com/626005/63092640-afe17780-bf62-11e9-9ea9-546489bb282c.png">
-
----
-
-<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=8G8PKPEADPD42&source=url">
-  <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif">
-</a>
+<3
